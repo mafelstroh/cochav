@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Product;
+
 class ProductController extends Controller
 {
     /**
@@ -16,7 +18,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $products = Product::all();
+
+        dd($products);
+
+        return view('products.list', compact($products));
     }
 
     /**

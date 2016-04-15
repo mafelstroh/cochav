@@ -5749,4 +5749,11 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+body {
+  padding-top: 50px; }
+
+.cochav-basic {
+  padding: 40px 15px;
+  text-align: center; }
+
 /*# sourceMappingURL=app.css.map */
