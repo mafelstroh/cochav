@@ -16,14 +16,14 @@
 		<div class="col-xs-1"></div> 
 		<div class="col-xs-9">
 			@if (isset($product))
-				{!! Form::model($product, ['route' => 'product.update']) !!}
+				{!! Form::model($product, ['route' => ['product.update', $product->product_id], 'method' => 'PUT']) !!}
 			@else
-				{!! Form::open(['route' => 'product.create']) !!}
+				{!! Form::open(['route' => 'product.store']) !!}
 			@endif
 			
 				<div class="form-group">
 					{!! Form::label('product_id', 'ID') !!}
-					{!! Form::text('product_id', null, ['class' => 'form-control', 'size' => 4]) !!}
+					{!! Form::text('product_id', null, ['class' => 'form-control', 'size' => 4, 'readonly']) !!}
 				</div>
 
 				<div class="form-group">

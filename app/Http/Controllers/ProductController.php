@@ -49,7 +49,7 @@ class ProductController extends Controller
             'product_price' => 'required|numeric|min:0'
         ]);
         // No _token for now, mass assignment section
-        $input = $request->except('_token');
+        $input = $request->except(['_token', 'product_id']);
 
         $product = new Product($input);
         // Set the indicated state based on the rules given
