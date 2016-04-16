@@ -13,4 +13,7 @@
 
 Route::get('/', 'PageController@index');
 
+// RESTful resource.
 Route::resource('product', 'ProductController');
+
+Route::get('/about', 'PageController@about');

@@ -18,4 +18,8 @@ class PageController extends Controller
     {
         return view('layouts.main');
     }
+
+    public function about() {
+        return view('site.about');
+    }
 }
