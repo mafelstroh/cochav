@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="container">
-
+	<!-- Basic layout to display validation errors -->
 		@if (count($errors) > 0)
 		    <div class="alert alert-danger">
 		        <ul>
