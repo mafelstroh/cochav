@@ -46,7 +46,7 @@
 					{!! Form::number('product_price', null, ['class' => 'form-control', 'step' => 0.01]) !!}
 				</div
 				<div class="form-group">
-					{!! Form::submit('Click Me!', ['class' => 'btn btn-success']) !!}	
+					{!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}	
 				</div>						
 			{!! Form::close() !!}
 		</div>

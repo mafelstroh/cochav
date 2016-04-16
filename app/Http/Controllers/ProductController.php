@@ -111,14 +111,23 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('product.index');
     }
 
+    /**
+     * Sets the proper state based on the quantity and price
+     * of each product. Typehinted and injected.
+     *
+     * @param Product $product
+     * @return boolean
+     */
     private function _setProductSate(Product $product) {
         return ($product->product_price == 0 || $product->product_quantity == 0) ? false : true;
     }
