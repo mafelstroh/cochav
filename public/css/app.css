@@ -5754,6 +5754,8 @@ body {
 
 .cochav-basic {
   padding: 40px 15px;
-  text-align: center; }
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=app.css.map */

@@ -27,40 +27,39 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="#"><b>Cochav - Product Management</b></a>
+	          <a class="navbar-brand" href="/"><b>Cochav - Product Management</b></a>
 	        </div>
 	        <div id="navbar" class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav">
-	            <li class="active"><a href="#">Home</a></li>
 	            <li><a href="#about">About</a></li>
 	          </ul>
 	        </div>
 	      </div>
 	    </nav>
 
-	    <div class="cochav-basic">
-	        <h1>Product Management</h1>
-			
-
-	        @yield('content')
-	    </div>
+	    <br />
 
         <div class="container">
 			<div class="row">
 			  
-			  <div class="col-xs-6 col-sm-4">
+			  <div class="col-xs-4">
 			  	<a href="/product" class="btn btn-primary btn-lg btn-block" role="button">List</a>
 			  </div>
 			  
-			  <div class="col-xs-6 col-sm-4">
-			  	<a href="#" class="btn btn-primary btn-lg btn-block" role="button">Manage</a>
+			  <div class="col-xs-4">
+			  	<a href="/product/create" class="btn btn-primary btn-lg btn-block" role="button">Manage</a>
 			  </div>
 			  
-			  <div class="col-xs-6 col-sm-4">
+			  <div class="col-xs-4">
 			  	<button type="button" class="btn btn-danger btn-lg btn-block">Clear</button>
 			  </div>
 
 			</div>
-        </div>	    
+        </div>	  
+
+	    <div class="cochav-basic">
+	        @yield('content')
+	    </div>
+
     </body>
 </html>

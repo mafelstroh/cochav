@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Product;
-
+use DB;
 class ProductController extends Controller
 {
     /**
@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.manage');
     }
 
     /**
@@ -41,7 +41,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Basic validation rules
+        $this->validate($request, [
+            'product_name'        => 'required|max:100',
+            'product_description' => 'required|max:255',
+            'product_quantity' => 'required|integer|min:0',
+            'product_price' => 'required|numeric|min:0'
+        ]);
+        // No _token for now, mass assignment section
+        $input = $request->except('_token');
+
+        $product = new Product($input);
+        // Set the indicated state based on the rules given
+        $product->product_isactive = $this->_setProductSate($product);
+        $product->save();
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -61,9 +76,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        //dd($product);
+        return view('products.manage', compact('product', $product));
     }
 
     /**
@@ -87,5 +103,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function _setProductSate(Product $product) {
+        return ($product->product_price == 0 || $product->product_quantity == 0) ? false : true;
     }
 }
