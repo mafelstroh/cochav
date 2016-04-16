@@ -42,17 +42,17 @@
         <div class="container">
 			<div class="row">
 			  
+			  <div class="col-xs-2"></div>
+
+			  <div class="col-xs-4">
+			  	<a href="/product/create" class="btn btn-primary btn-lg btn-block" role="button">Create</a>
+			  </div>
+			  
 			  <div class="col-xs-4">
 			  	<a href="/product" class="btn btn-primary btn-lg btn-block" role="button">List</a>
 			  </div>
-			  
-			  <div class="col-xs-4">
-			  	<a href="/product/create" class="btn btn-primary btn-lg btn-block" role="button">Manage</a>
-			  </div>
-			  
-			  <div class="col-xs-4">
-			  	<button type="button" class="btn btn-danger btn-lg btn-block">Clear</button>
-			  </div>
+
+			  <div class="col-xs-2"></div>
 
 			</div>
         </div>	  

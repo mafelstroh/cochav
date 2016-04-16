@@ -11,6 +11,12 @@ use App\Product;
 use DB;
 class ProductController extends Controller
 {
+    protected $rules = [
+        'product_name'        => 'required|max:100',
+        'product_description' => 'required|max:255',
+        'product_quantity' => 'required|integer|min:0',
+        'product_price' => 'required|numeric|min:0'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -42,12 +48,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // Basic validation rules
-        $this->validate($request, [
-            'product_name'        => 'required|max:100',
-            'product_description' => 'required|max:255',
-            'product_quantity' => 'required|integer|min:0',
-            'product_price' => 'required|numeric|min:0'
-        ]);
+        $this->validate($request, $this->rules);
         // No _token for now, mass assignment section
         $input = $request->except(['_token', 'product_id']);
 
@@ -78,7 +79,6 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //dd($product);
         return view('products.manage', compact('product', $product));
     }
 
@@ -86,12 +86,26 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Product              $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        // Get all the input data, but some fields that are nor required for this operation
+        $input = $request->except(['_token', 'product_id']);
+        // Basic validation rules
+        $this->validate($request, $this->rules);
+
+        // val assignment
+        $product->product_name        = $input['product_name'];
+        $product->product_description = $input['product_description'];
+        $product->product_price       = $input['product_price'];
+        $product->product_quantity    = $input['product_quantity'];
+        $product->product_isactive    = $this->_setProductSate($product);
+
+        $product->save();
+
+        return redirect()->route('product.index');
     }
 
     /**
